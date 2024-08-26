@@ -19,7 +19,7 @@ public class PulpitSpawn : MonoBehaviour
 
     void Start()
     {
-        string jsonFilePath = Path.Combine(Application.dataPath, "json.json"); // Adjust path if necessary
+        string jsonFilePath = Path.Combine(Application.streamingAssetsPath, "json.json");// Adjust path if necessary
         string jsonString = File.ReadAllText(jsonFilePath); // Read the JSON file
         Debug.Log("JSON String: " + jsonString);
 
@@ -40,20 +40,13 @@ public class PulpitSpawn : MonoBehaviour
         timealive = UnityEngine.Random.Range(minDestroyTime, maxDestroyTime);
 
         timeSinceLastSpawn = 0.0f;
-
-        //Debug.Log($"Min Pulpit Destroy Time: {minDestroyTime}");
-        //Debug.Log($"Max Pulpit Destroy Time: {maxDestroyTime}");
-        //Debug.Log($"Pulpit Spawn Time: {spawnInterval}");
-        //Debug.Log($"Initial Time Alive: {timealive}");
     }
 
     void Update()
     {
-        //Debug.Log("Time.deltaTime: " + Time.deltaTime);
-
         // Update timealive
         timealive -= Time.deltaTime;
-        //Debug.Log("Time Alive : " + timealive);
+        Debug.Log("Time Alive : " + timealive);
 
         // Calculate seconds and milliseconds
         float seconds = Mathf.Floor(timealive);
@@ -83,7 +76,7 @@ public class PulpitSpawn : MonoBehaviour
     {
         if (spawnItem == null)
         {
-            //Debug.LogError("Spawn item is not assigned in the inspector.");
+            Debug.LogError("Spawn item is not assigned in the inspector.");
             return;
         }
 

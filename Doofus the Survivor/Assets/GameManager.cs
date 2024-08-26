@@ -11,7 +11,13 @@ public class GameManager : MonoBehaviour
     public GameObject FallSound;
     public int PlayerScore;
     public Text scoreText;
-    
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync("Main Menu");
+    }
+
     public void addScore()
     {
         PlayerScore = PlayerScore + 1;

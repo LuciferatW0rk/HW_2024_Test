@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string jsonFilePath = Path.Combine(Application.dataPath, "json.json"); // Adjust path if necessary
+        string jsonFilePath = Path.Combine(Application.streamingAssetsPath, "json.json"); // Adjust path if necessary
         string jsonString = File.ReadAllText(jsonFilePath); // Read the JSON file
         Debug.Log("JSON String: " + jsonString);
 
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
         playerSpeed = gameData.player_data.speed;
 
-        playerSpeed *= 3;
+        playerSpeed *= playerSpeed;
         Debug.Log($"player speed : {playerSpeed}");
     }
 
