@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnItem: {fileID: 379206360538848988}
+  timervalue: {fileID: 2190768465318888168}
 --- !u!1 &3283698144204738772
 GameObject:
   m_ObjectHideFlags: 0

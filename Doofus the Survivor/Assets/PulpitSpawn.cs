@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 
 
 public class PulpitSpawn : MonoBehaviour
@@ -10,6 +13,7 @@ public class PulpitSpawn : MonoBehaviour
     float lifetime = 5.0f; // Time till the pulpit despawns
     private float timeSinceLastSpawn;
     private float timealive;
+    public TMP_Text timervalue;
 
     void Start()
     {
@@ -21,6 +25,7 @@ public class PulpitSpawn : MonoBehaviour
     {
         timealive += Time.deltaTime;
         Debug.Log("Time Alive : " + timealive);
+        timervalue.text = string.Format("{0:00}",timealive);
         if (timealive > lifetime)
         {
             Debug.Log("Destroying object after " + timealive + " seconds");
