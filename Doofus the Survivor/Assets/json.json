@@ -2,6 +2,7 @@
     "player_data": {
         "speed": 3
     },
+
     "pulpit_data": {
         "min_pulpit_destroy_time": 4,
         "max_pulpit_destroy_time": 5,

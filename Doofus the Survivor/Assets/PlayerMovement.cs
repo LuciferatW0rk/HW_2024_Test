@@ -1,17 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float speed = 3.0f;
-    float turnSpeed = 3.0f;
+    private float playerSpeed ;
     public float horizontalInput;
     public float verticalInput;
+
+    private PlayerData playerData;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        string jsonFilePath = Path.Combine(Application.dataPath, "json.json"); // Adjust path if necessary
+        string jsonString = File.ReadAllText(jsonFilePath); // Read the JSON file
+        Debug.Log("JSON String: " + jsonString);
+
+        GameData gameData = JsonUtility.FromJson<GameData>(jsonString); // Deserialize the JSON to a C# object
+
+        playerSpeed = gameData.player_data.speed;
+        Debug.Log($"player speed : {playerSpeed}");
     }
 
     // Update is called once per frame
@@ -19,7 +30,11 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.forward * Time.deltaTime * speed *verticalInput);
-        transform.Translate(Vector3.right * Time.deltaTime * turnSpeed *horizontalInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed * verticalInput);
+        transform.Translate(Vector3.right * Time.deltaTime * playerSpeed * horizontalInput);
     }
 }
+
+
+
+
