@@ -9,8 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private float playerSpeed ;
     public float horizontalInput;
     public float verticalInput;
-
     private PlayerData playerData;
+
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,17 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed * verticalInput);
         transform.Translate(Vector3.right * Time.deltaTime * playerSpeed * horizontalInput);
+
+        if(transform.position.y < -2)
+        {
+            HandlePlayerDeath();
+        }
+    }
+
+    void HandlePlayerDeath()
+    {
+        gameManager.gameOver();
+        Destroy(gameObject);
     }
 }
 
