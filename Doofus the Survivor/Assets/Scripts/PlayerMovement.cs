@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
         GameData gameData = JsonUtility.FromJson<GameData>(jsonString); // Deserialize the JSON to a C# object
 
         playerSpeed = gameData.player_data.speed;
+
+        playerSpeed *= 3;
         Debug.Log($"player speed : {playerSpeed}");
     }
 
