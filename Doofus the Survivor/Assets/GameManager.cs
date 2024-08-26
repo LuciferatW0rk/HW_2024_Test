@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverScreen;
+    public GameObject Music;
+    public GameObject FallSound;
     public int PlayerScore;
     public Text scoreText;
     
@@ -18,12 +20,16 @@ public class GameManager : MonoBehaviour
 
     public void restartGame()
     {
+        Music.SetActive(true);
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Music.SetActive(true);
     }
     public void gameOver()
     {
         Time.timeScale = 0;
+        Music.SetActive(false);
+        FallSound.SetActive(true);
         gameOverScreen.SetActive(true);
     }
 }
